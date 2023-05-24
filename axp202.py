@@ -34,9 +34,9 @@ from ustruct import unpack
 
 from constants import *
 
-default_pin_scl = 22
-default_pin_sda = 21
-default_pin_intr = 35
+default_pin_scl = "G22"
+default_pin_sda = "G21"
+default_pin_intr = "G35"
 default_chip_type = AXP202_CHIP_ID
 
 
@@ -61,8 +61,7 @@ class PMU(object):
 
     def init_i2c(self):
         print('* initializing i2c')
-        self.bus = I2C(scl=self.pin_scl,
-                       sda=self.pin_sda)
+        self.bus = I2C(pins=(self.pin_sda,self.pin_scl))
 
     def init_pins(self):
         print('* initializing pins')
